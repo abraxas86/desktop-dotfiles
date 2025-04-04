@@ -1,0 +1,28 @@
+" ---------- VIMWIKI SETTINGS ----------
+
+" Enable Vimwiki plugin
+let g:vimwiki_auto_tags = 1  " Automatically add tags for each page
+let g:vimwiki_global_ext = 1  " Use global extension for links
+
+" Folding settings for Vimwiki
+let g:vimwiki_folding = 'list'  " Enable folding based on task list (for todo-style pages)
+
+" Task List Settings (for checkbox-style tasks)
+let g:vimwiki_tasklist = 1  " Enable task list features (checkboxes)
+let g:vimwiki_tasklist_checked = '[x]'  " Set the checked state format for tasks
+let g:vimwiki_tasklist_unchecked = '[ ]'  " Set the unchecked state format for tasks
+
+" Other general Vimwiki settings
+
+" Enable Vimwiki link autocompletion
+let g:vimwiki_link_ext = 1  " Add extension to links when autocompleting
+
+" Enable syntax highlighting for Vimwiki markdown
+
+" Automatically open the last used wiki file on startup
+autocmd VimEnter * if filereadable(expand('~/vimwiki/index.wiki')) | e ~/vimwiki/index.wiki | endif
+
+" Enable folding based on indentation for the Vimwiki markdown files (optional)
+set foldmethod=indent
+set foldlevel=99  " Open all folds by default
+

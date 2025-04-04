@@ -1,0 +1,52 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Aliases
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# Terminal prompt display:
+# old and boring
+# PS1='[\u@\h \W]\$ '
+
+#New and fresh
+PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'; PS1='\n\[\e[38;5;105m\]╭──\[\e[0m\][\[\e[38;5;127m\]\!\[\e[0m\]][\[\e[92;1;2m\]\t\[\e[0m\]][\[\e[38;5;214;1m\]\u\[\e[38;5;204m\]@\h\[\e[0m\]]\[\e[38;5;105m\]$(if git rev-parse --is-inside-work-tree &>/dev/null; then echo " \[\e[38;5;214m\] \[\e[38;5;214m\]${PS1_CMD1}"; fi)\[\e[0m\]\n\[\e[38;5;105m\]╰─>\[\e[0m\][\[\e[38;5;111m\]\w\[\e[0m\]] \$ '
+
+# Directory shortcuts:
+CARDS="/home/abraxas/twitchBots/git/abx-conjurebot/public/images"
+BOTS="/home/abraxas/twitchBots/git"
+
+# Commands:
+alias copyclip='cut -d" " -f1 | wl-copy'
+alias wtf='nvim $(fzf --preview="cat {}")'
+
+# OBS Wayland Fixes
+#export QT_QPA_PLATFORM=wayland # crashes when opening projetors
+export QT_QPA_PLATFORM=xcb
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_SESSION_TYPE=wayland
+export GDK_BACKEND="wayland,x11"
+export MOZ_ENABLE_WAYLAND=1
+
+# LOCAL FIXES
+export LC_ALL=en_US.UTF-8
+
+# TERM settings
+export TERM=xterm-256color
+
+
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+#thefuck
+eval "$(thefuck --alias)"
+
+#cargo
+export PATH="$HOME/.cargo/bin:$PATH"
